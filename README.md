@@ -15,30 +15,10 @@ Construir un pipeline reproducible que permita:
 
 ---
 
-## 2. Estructura del repositorio
-
-```
-challenge3-telecomx/
-├─ data/
-│  ├─ raw/                      # Datos originales (no tocar)
-│  └─ processed/                # Dataset limpio listo para modelado (telecom_churn_clean.csv)
-├─ notebooks/                   # Notebooks exploratorios y de validación
-├─ src/
-│  ├─ data_pipeline.py          # Carga, limpieza y transformaciones reproducibles
-│  ├─ features.py               # Ingeniería de variables
-│  ├─ train.py                  # Entrena y guarda modelos (con CV y tuning)
-│  ├─ evaluate.py               # Evaluación y generación de reportes/plots
-│  └─ explainability.py         # SHAP / importancias y reportes interpretables
-├─ models/                      # Modelos entrenados (.pkl / .joblib)
-├─ reports/                     # Imágenes y reportes (PNG, HTML)
-├─ requirements.txt
-├─ README.md                    # Este documento
-└─ LICENSE
-```
 
 ---
 
-## 3. Datos
+## 2. Datos
 
 **Archivo principal:** `data/processed/telecom_churn_clean.csv` (resultado de la fase de limpieza).
 
@@ -48,7 +28,7 @@ challenge3-telecomx/
 
 ---
 
-## 4. Requisitos e instalación
+## 3. Requisitos e instalación
 
 Recomendado: crear un entorno virtual antes de instalar dependencias.
 
@@ -77,7 +57,7 @@ jupyterlab      # si quieres ejecutar notebooks
 
 ---
 
-## 5. Flujo de ejecución (rápido)
+## 4. Flujo de ejecución (rápido)
 
 1. **Preprocesar y limpiar**
 
@@ -107,7 +87,7 @@ Cada script imprime un resumen y genera artefactos (figuras PNG, métricas en JS
 
 ---
 
-## 6. Modelos incluidos y breve explicación
+## 5. Modelos incluidos y breve explicación
 
 Se recomiendan probar al menos los siguientes modelos:
 
@@ -119,7 +99,7 @@ Se recomiendan probar al menos los siguientes modelos:
 
 ---
 
-## 7. Métricas y criterios de aceptación
+## 6. Métricas y criterios de aceptación
 
 * **ROC AUC** (discriminación completa).
 * **Precision / Recall / F1** (especial atención a recall/precision en la clase positiva si se prioriza identificar churners).
@@ -128,7 +108,7 @@ Se recomiendan probar al menos los siguientes modelos:
 
 ---
 
-## 8. Interpretabilidad y explicación de predicciones
+## 7. Interpretabilidad y explicación de predicciones
 
 Se sugiere generar:
 
@@ -139,7 +119,7 @@ Estos reportes permiten diseñar acciones dirigidas y justificar campañas frent
 
 ---
 
-## 9. Resultados esperados y artefactos
+## 8. Resultados esperados y artefactos
 
 Al ejecutar el pipeline completo se deben generar:
 
@@ -150,7 +130,7 @@ Al ejecutar el pipeline completo se deben generar:
 
 ---
 
-## 10. Buenas prácticas y reproducibilidad
+## 9. Buenas prácticas y reproducibilidad
 
 * Fijar `random_state` en todas las etapas (split, modelos, CV).
 * Versionar datos en `data/raw/` y preservar `data/processed/` para trazabilidad.
@@ -159,7 +139,7 @@ Al ejecutar el pipeline completo se deben generar:
 
 ---
 
-## 11. Despliegue (sugerencia rápida)
+## 10. Despliegue (sugerencia rápida)
 
 * **Scoring batch:** programar scoring diario/semanal que cargue nuevos clientes y genere una lista con `probabilidad_churn` > umbral para acciones de retención.
 * **API de scoring:** empaquetar el modelo en un microservicio (FastAPI / Flask) que devuelva probabilidades para integrarlo con CRM.
@@ -167,7 +147,7 @@ Al ejecutar el pipeline completo se deben generar:
 
 ---
 
-## 12. Limitaciones y aspectos a mejorar
+## 11. Limitaciones y aspectos a mejorar
 
 * Correlación ≠ causalidad: las acciones deben validarse con A/B tests.
 * Variables faltantes como historial de tickets, tiempos de reparación o NPS pueden mejorar mucho la predicción.
@@ -175,7 +155,7 @@ Al ejecutar el pipeline completo se deben generar:
 
 ---
 
-## 13. Próximos pasos recomendados
+## 12. Próximos pasos recomendados
 
 * Implementar un experimento piloto de retención (scoring → intervención → evaluación).
 * Añadir fuentes operacionales (tickets, logs de red).
